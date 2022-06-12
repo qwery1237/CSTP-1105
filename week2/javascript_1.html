@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>First JavaScript Coding</title>
+
+    <style>
+      h1 {
+        text-align: center;
+      }
+      ol {
+        list-style: none;
+        counter-reset: item;
+      }
+      ol > li {
+        counter-increment: item;
+        margin-bottom: 5px;
+      }
+      ol > li:before {
+        margin-right: 10px;
+        content: counter(item);
+        background: crimson;
+        border-radius: 100%;
+        color: white;
+        width: 1.3em;
+        text-align: center;
+        display: inline-block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>JavaScript Code 1</h1>
+    <p>
+      Use <code>console.log()</code> to output the results of the below
+      questions unless asked to alert them specifically. Feel free to comment
+      out completed questions if the amount of <code>console.logs()</code> takes
+      up too much space in the console window.
+    </p>
+
+    <ol>
+      <li>
+        Calculate the sum of the following numbers 15, 12, 32, 8, 19, 22, 20 and
+        7.
+      </li>
+      <li>Calculate the average/mean of all the above numbers.</li>
+
+      <br />
+
+      <li>Convert 10 Canadian dollars to USD</li>
+      <li>Convert 50 KG to POUNDS.</li>
+      <li>Convert 100 POUNDS to KG.</li>
+      <li>Convert 2.5 Hours to Seconds.</li>
+      <li>Convert 3600 Seconds to Hours.</li>
+
+      <p>
+        For the rest use a prompt to input the value that needs to be converted.
+        Use <code>parseInt()</code> to insure the prompt is converted to a
+        number for your calculations.
+      </p>
+
+      <li>Convert Fahrenheit to degrees Celsius.</li>
+      <li>Convert degrees Celsius to Fahrenheit.</li>
+      <li>Calculate the year a person was born based on their age.</li>
+      <li>
+        --> Extend the above to make it more accurate by checking if the user
+        has had their birthday this year.
+      </li>
+
+      <br />
+
+      <li>
+        Create variables separately for your first and last name and then
+        display them in an alert. Do not use prompts for this.
+      </li>
+      <li>--> Extend the above to include a space between them.</li>
+      <li>
+        Use three Prompts to ask the user for a type of fruit, the cost of the
+        fruit and the currency to use. Then show an alert that displays "Apples
+        cost in total $5" if that's what was inputted.
+      </li>
+      <li>
+        Use four prompts to ask the user what their hobbies are. When that is
+        done display an alert that says "I like the following hobbies: hobby1,
+        hobby2, hobby3 and hobby4.". Make sure to include the commas, the "and"
+        and the period.
+      </li>
+
+      <br />
+
+      <li>
+        Create a system which checks how much annual salary a user makes and
+        then alerts the user whether they are in the low, medium or high tax
+        bracket. The brackets are as follows:
+        <ul>
+          <li>Low Bracket - Less than 20,000,</li>
+          <li>Medium Bracket - Between 35,000 and 20,000 inclusive</li>
+          <li>High Bracket - Above 35,000</li>
+        </ul>
+      </li>
+      <li>
+        Extend the above to calculate the tax to be deducted from the user's
+        salary and display this info in another alert. The tax rates for each
+        bracket are as follows and need only apply to the user's entire income
+        e.g. high income earners should have 30% tax taken from their entire
+        annual salary:
+        <ul>
+          <li>Low Bracket - 10% tax</li>
+          <li>Medium Bracket - 20% tax</li>
+          <li>High Bracket - 30% tax</li>
+        </ul>
+      </li>
+      <li>
+        Further extend the above so that only a single alert is displayed. It
+        should read "You are in the Medium Tax Bracket. Total Tax = tax. Total
+        Net = salary - tax".
+      </li>
+    </ol>
+    <script>
+      // Write your code here
+
+      // WAYS TO RECEIVE & OUTPUT TO A WEBPAGE
+      // =====================================
+
+      // This is a single line comment
+      /*
+               This is a multi
+               line comment
+            */
+
+      // console.log() puts a string into the console window
+      //   console.log("Hello World !!!!");
+
+      //   // alert() pops up a box with your text onto the page
+      //   alert("ALERT");
+
+      //   // prompt() asks the user for a string input
+      //   //prompt("What is your last name?");
+      //   // You can store this user input into a string variable
+      //   const name = prompt("What is your name?");
+
+      //   // confirm() asks the user for a boolean (true or false) response
+      //   //confirm("Are you tall?");
+      //   // Like promtp() you can store this user input into a variable
+      //   const isTall = confirm("Are you tall?");
+
+      //   // VARIABLES
+      //   // =====================================
+
+      //   // DECLARING VARIABLES & ASSIGNING VALUES
+      //   // Changeable and block scoped
+      //   let age = 20;
+
+      //   // NOT changeable and block scoped
+      //   const year = 2022;
+
+      //   // Changeable and function scoped
+      //   var petAge = 5;
+
+      //   // Changeable and global scoped
+      //   myGlobalNumber = 1111;
+
+      //   // REASSIGNING VALUES TO VARIABLES
+      //   age = 0; // 0
+      //   age = age + 10; // 10
+      //   age += 10; // 20
+      //   age++; // 21
+
+      //   age = "This is a string";
+
+      // Make sure to use comments to label what question you are working on
+      // Question 1
+      let sum1 = 15 + 12 + 32 + 8 + 19 + 22 + 20 + 7;
+      console.log("Sum = " + sum1);
+      // Question 2
+      console.log("Average = " + sum1 / 8);
+      // Question 3
+      const cad = 10;
+      const usd = cad * 0.79;
+      console.log("10 CAD = " + usd + " USD");
+      // Question 4
+      const kg = 50;
+      const lbs = 100;
+      const convertToLbs = parseInt(kg * 2.2);
+      console.log("50 KG = " + convertToLbs + " POUNDS");
+      // Question 5
+      const convertToKg = parseInt(lbs / 2.2);
+      console.log("100 POUNDS = " + convertToKg + " KG");
+      // Question 6
+      const hour = 2.5;
+      const convertToSec = hour * 3600;
+      console.log(`2.5 Hours = ${convertToSec} Seconds`);
+      // Question 7
+      const sec = 3600;
+      const convertToHour = sec / 3600;
+      console.log(`3600 Seconds = ${convertToHour} Hour`);
+      // Question 8
+      const fahrenheit = 5;
+      const convertToCelsius = (fahrenheit - 32) / 1.8;
+      console.log(`5F = ${convertToCelsius}C`);
+      // Question 9
+      const celsius = 5;
+      const convertToFahrenheit = celsius * 1.8 + 32;
+      console.log(`5C = ${convertToFahrenheit}F`);
+      // Question 10
+      const year = 2022;
+      const age = parseInt(prompt("Enter your age"));
+      let yearYouWereBorn = year - age;
+      console.log(`The year you were born is ${yearYouWereBorn}`);
+      // Question 11
+      const birthday = confirm(
+        "Have you already had your birthday in this year?"
+      );
+      if (birthday) {
+        yearYouWereBorn = year - age;
+      } else {
+        yearYouWereBorn = year - (age + 1);
+      }
+      console.log(`The year you were born is ${yearYouWereBorn}`);
+
+      // Question 12
+      const firstName = "Jinsoo";
+      const lastName = "Son";
+      alert(`My name is ${firstName + lastName}`);
+      // Question 13
+      alert(`Ny name is ${firstName} ${lastName}`);
+      // Question 14
+      const fruit = prompt("Enter a type of fruit");
+      const cost = prompt("Enter the cost of the fruit");
+      const currency = prompt("Enter the currency to use");
+      alert(`${fruit} cost in total ${currency + cost}`);
+
+      // Question 15
+      const hobby1 = prompt("Enter your hobby");
+      const hobby2 = prompt("Enter your hobby");
+      const hobby3 = prompt("Enter your hobby");
+      const hobby4 = prompt("Enter your hobby");
+      alert(
+        `I like the following hobbies: ${hobby1}, ${hobby2}, ${hobby3} and ${hobby4}.`
+      );
+      // Question 16
+      const salary = parseInt(prompt("Enter your annual salary"));
+      let bracket;
+      if (salary < 20000) {
+        bracket = "Low Tax Bracket";
+      } else if (salary <= 35000) {
+        bracket = "Medium Tax Bracket";
+      } else {
+        bracket = "High Tax Bracket";
+      }
+      alert(bracket);
+      // Question 17
+      let tax;
+      if (salary < 20000) {
+        tax = salary * 0.1;
+      } else if (salary <= 35000) {
+        tax = salary * 0.2;
+      } else {
+        tax = salary * 0.3;
+      }
+      alert(`Your annual tax is ${tax}`);
+      // Question 18
+
+      alert(
+        `You are in the ${bracket}. Total Tax = ${tax}. Total Net = ${
+          salary - tax
+        }`
+      );
+    </script>
+  </body>
+</html>
