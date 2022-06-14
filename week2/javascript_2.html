@@ -137,7 +137,7 @@
         );
       } else {
         let country = askCountryToGo();
-        checkNorthAmericaOrNot(country);
+        alertWhereToGo(country);
       }
 
       function seeIfUserHas(itemToAsk) {
@@ -155,7 +155,7 @@
         const askUser = prompt("Where are you visiting?").toLowerCase();
         return askUser;
       }
-      function checkNorthAmericaOrNot(destination) {
+      function alertWhereToGo(destination) {
         if (
           destination == "canada" ||
           destination == "usa" ||
