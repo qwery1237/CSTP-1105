@@ -137,8 +137,7 @@
         );
       } else {
         let country = askCountryToGo();
-        country = checkNorthAmericaOrNot(country);
-        alert(country);
+        checkNorthAmericaOrNot(country);
       }
 
       function seeIfUserHas(itemToAsk) {
@@ -162,9 +161,9 @@
           destination == "usa" ||
           destination == "mexico"
         ) {
-          return "You are going on holiday in North America.";
+          alert ("You are going on holiday in North America.");
         } else {
-          return `Enjoy your holiday in ${destination}`;
+          alert (`Enjoy your holiday in ${destination}`);
         }
       }
 
