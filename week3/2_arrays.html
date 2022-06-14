@@ -78,7 +78,7 @@
             const season = ["Spring","Summer","Fall","Winter"]
             for (let i in monthArray){
                 let monthsOfSeason = "";
-                for (let j = 0; j < 3; j++){
+                for (let j = 0; j < monthArray[i].length; j++){
                     if (monthsOfSeason ==="")
                     {
                         monthsOfSeason = monthArray[i][j]
@@ -173,10 +173,11 @@
             <script>
                 // Code for Q8
                 const removeArray = ["first", "second", "third", "fourth", "fifth"];
-                const element = removeArray.splice(2,1)
-                element.push(removeArray.shift(),removeArray.pop())
+                const elementArray = removeArray.splice(2,1);
+                elementArray.unshift(removeArray.shift());
+                elementArray.push(removeArray.pop());
                 console.log(removeArray);
-                console.log(element)
+                console.log(elementArray);
             </script>
 
         </ol>

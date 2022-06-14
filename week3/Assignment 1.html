@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment 1</title>
+        <style>
+            body {
+                font-family: helvetica;
+            }
+            h1 {
+                color: crimson;
+            }
+            em { 
+                font-weight: bold; 
+                font-style: normal; 
+                text-decoration: underline; 
+                font-size: 1.2em; 
+            }
+            li {
+                margin: 20px;
+            }
+            ol { 
+                width: 700px; 
+                position: relative; 
+                left: 50%; 
+                margin-left: -350px;
+            }
+            p { 
+                width: 700px; 
+                position: relative; 
+                left: 50%; 
+                margin-left: -350px;
+            }
+            h1 {
+                text-align:center;
+            }
+            ul > li {
+                margin-top: 0; 
+                margin-bottom: 5px;
+            }
+        </style>
+    </head>
+
+    <h1>Introduction to Programming Assignment 1</h1>
+
+        <p>
+            Complete the following tasks.
+            <br>
+            <em>60%</em> of the marks will go to successfully completing the tasks free of errors.
+            <br>
+            <em>20%</em> of the marks will go to how well you comment your code. This also incorporates good naming conventions for variables.
+            <br>
+            <em>20%</em> of the marks will go to how efficient your code is using the methods you have learned to this point.
+        </p>
+
+        <ol>
+
+            <li><em>Complicated Tax Calculator</em>
+                <br/>
+                In a previous class you wrote pseudocode and flow charts to calculate tax. This problem is very similar to that but may contain some changes and additions.<br>
+                Write code that will ask the user, using a prompt, what their monthly gross income is. If the user doesn't type in a number tell them their mistake with an alert and do not proceed with the calculation.
+                <ul>
+                    <li>If the user earns less than or equal to 500 dollars the tax taken is 0 and they are in the low tax bracket. Only for these people should you do the following. Ask the user how many children they have. For each child that they have, give them 10 dollars in child benefits. If the user does not type in a number they get 0 dollars in child benefits.</li>
+                    <li>If the user earns more than 500 dollars but less than or equal to 700 they are in the medium tax bracket. Tax taken here should be 15% of any sum that is over 500.</li>
+                    <li>If the user earns more than 700 dollars they are in the high tax bracket. Tax taken here should be 15% of the sum that is over 500 but less than or equal to 700 and 25% of everything over 700.</li>
+                </ul>
+                The final result should show in a single alert the user's gross income, the tax bracket (low, medium or high), total tax, child benefits and net income (gross + child benefits - tax).
+
+                <p>Gross Salary = 400, Number of Kids = 2, Bracket = Low, Net Income = 420<br>
+                   Gross Salary = 620, Bracket = Medium, Net Income = 602<br>
+                   Gross Salary = 900, Bracket = High, Net Income = 820.15</p>
+            </li>
+
+            <script>
+                // ====================
+                // 1.) Complicated Tax Calculator
+                // ====================
+                //Run a function to get user's salary information.(Function1)
+                const grossSalary = getSalaryInfo();
+                // Run a function to return user's tax bracket.(Function2) 
+                const taxBracket = userTaxBracket(grossSalary);
+                // Declare 3 variables to store data on tax, child benefits, and the number of kids. 
+                let monthlyTax;
+                let childBenefits = 0; 
+                let numberofKids;
+                // Calculate tax and child benefits based on the tax bracket.
+                if (taxBracket == "Low"){
+                    monthlyTax = 0;
+                    numberofKids = getKidsInfo();   // Ask user about the number of kids the user has.(Function 3)
+                    childBenefits = 10*numberofKids;
+                }
+                else if (taxBracket == "Medium"){
+                    monthlyTax = (grossSalary-500)*0.15
+                }
+                else {
+                    monthlyTax = 200*0.15 + (grossSalary - 700)*0.25
+                    
+                }
+                // Calculate user's net income.
+                const netIncome = grossSalary+childBenefits-monthlyTax 
+                // alert gross salary , number of kids(if needed), bracket and net income
+                if (typeof(numberofKids)=="number") {
+                    alert(`Gross Salary = ${grossSalary}, Number of Kids = ${numberofKids}, Bracket = ${taxBracket}, Net Income = ${netIncome}`)
+                }
+                else {
+                    alert(`Gross Salary = ${grossSalary}, Bracket = ${taxBracket}, Net Income = ${netIncome}`)
+                }
+                // Function1
+                // 1. Ask salary to user
+                // 2. Use while loop until user-input would be valid
+                // 3. Convert user-input's type to integer and Return the converted value 
+                function getSalaryInfo(){
+                    let salary = prompt("Enter your monthly gross income.")
+                    while (true) {
+                        if (salary == null || isNaN(salary) || salary == ""){
+                            salary = prompt("Please Enter a valid value.")
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                    return parseInt(salary);
+                }
+                // Function2
+                // 1. Return tax bracket as a string based on salary
+                function userTaxBracket(salary) {
+                    if (salary<=500) {
+                        return "Low"
+                    }
+                    else if (salary>700){
+                        return "High"
+                    }
+                    else {
+                        return "Medium"
+                    }
+                    
+                }
+                //Function3
+                // 1. Ask the number of kids the user has
+                // 2. if the input is invalid return 0
+                // 3. if the input is valid return the value as a number.
+                function getKidsInfo() {
+                    let kidsNum = prompt("How many kids do you have?")
+                    if (kidsNum == null || isNaN(kidsNum) || kidsNum == ""){
+      
+                            return 0;
+                        }
+                    else {
+                        return parseInt(kidsNum);
+                    }
+                }
+
+            </script>
+
+            <li><em>Person's Details</em>
+                <br>
+                Ask a user to type in their first and last name into a single prompt separated by a space. You can assume the user will do this correctly.<br>
+                In a single alert write the following message where the square brackets represents values:
+                <ul>
+                    <li>Hello [first and last name of user].</li>
+                    <li>Your name is [number of letters in name] letters long.</li>
+                    <li><i>depending on whether this is true or not show the following output</i> Your name begins with a vowel which is the letter [first letter of their name in capital letter]. <i>or</i> Your name beings with a consonant which is the letter [first letter of their name in capital letter].</li>
+                    <li>The last letter of your name is [last letter of their last name in lower case].</li>
+                </ul>
+            </li>
+
+            <script>
+                // =================== 
+                // 2.) Person's Details
+                // ===================
+                const userFullName = getUserName();
+                const nameFirstLetter = getFirstLetter(userFullName);
+                const nameLastLetter = getLastLetter(userFullName);
+                alert (``)
+
+            </script>
+        </ol>    
+    </body>
+</html>
