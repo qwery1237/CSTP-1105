@@ -167,10 +167,52 @@
                 // =================== 
                 // 2.) Person's Details
                 // ===================
+                // Run the function to get user's name. (Function 1)
                 const userFullName = getUserName();
-                const nameFirstLetter = getFirstLetter(userFullName);
-                const nameLastLetter = getLastLetter(userFullName);
-                alert (``)
+                // Get first letter of user's name and capitalize the letter.
+                const nameFirstLetter = userFullName.charAt(0).toLocaleUpperCase();
+                // Get last letter of user's name 
+                const nameLastLetter = userFullName.charAt(userFullName.length-1);
+                // Print a message that includes user's full name, name length, first letter of name, and last letter of name, depending on whether the first letter of the name is a consonant or vowel.(Function 2) 
+                if (checkVowelorNot(nameFirstLetter)){
+                    alert(`Hello ${userFullName}.\nYour name is ${userFullName.length-1} letters long.\nYour name begins with a vowel which is the letter ${nameFirstLetter}.\nThe last letter of your name is ${nameLastLetter}.`)
+                }
+                else {
+                    alert(`Hello ${userFullName}.\nYour name is ${userFullName.length-1} letters long.\nYour name begins with a consonant which is the letter ${nameFirstLetter}.\nThe last letter of your name is ${nameLastLetter}.`)
+                }
+                // Function 1
+                // 1. Ask user's full name until user name would be valid.(Function 2)
+                // 2. Return the name
+                function getUserName() {
+                    let name;
+                    while (true) {
+                        name = prompt("What is your name?") 
+                        if (!checkNameValid(name)){
+                            alert("Please put only one space between your first name and last name!")
+                            continue;
+                        }
+                        break;
+                    }
+                    return name;
+                }
+                // Function 2
+                // 1. If user-input is not valid(No more than a space and only between firstname and lastname), return false.
+                // 2. If not, return true.
+                function checkNameValid(name) {
+                    if (!name.includes(" ") || name.charAt(0) == " " || name.charAt(name.length-1) == " " || name.split(" ").length > 2){
+                            return 0;
+                        }
+                    return 1;
+                }
+                // Function 3
+                // 1. If first letter of username is a vowel, return true.
+                // 2. If not, return false.
+                function checkVowelorNot(letter){
+                    if ("AEIOU".includes(letter)){
+                        return 1;
+                    }
+                    return 0;
+                }
 
             </script>
         </ol>    
