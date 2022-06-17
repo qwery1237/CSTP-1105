@@ -90,12 +90,12 @@
                     "Quebec", 
                     "Saskatchewan"
                 ]
-                for (let i in canadianProvinces){
-                    if (canadianProvinces[i]=="Ontario"){
-                        console.log(`${canadianProvinces[i]} is a province which contains the capital city Ottawa`)
+                for (let i of canadianProvinces){
+                    if (i=="Ontario"){
+                        console.log(`${i} is a province which contains the capital city Ottawa`)
                     }
                     else{
-                        console.log(`${canadianProvinces[i]} is a province in Canada`)
+                        console.log(`${i} is a province in Canada`)
                     }
                 }
             </script>
@@ -115,12 +115,12 @@
             <script>
                 // Code for Q6
                 let messageofProvinces = "";
-                for (let i in canadianProvinces){
-                    if (canadianProvinces[i]=="Ontario"){
-                            messageofProvinces += `${canadianProvinces[i]} is a province which contains the capital city Ottawa\n`;
+                for (let i of canadianProvinces){
+                    if (i=="Ontario"){
+                            messageofProvinces += `${i} is a province which contains the capital city Ottawa\n`;
                         }
                         else{
-                            messageofProvinces += `${canadianProvinces[i]} is a province in Canada\n`;
+                            messageofProvinces += `${i} is a province in Canada\n`;
                         }
                 }
                 alert(messageofProvinces);
@@ -132,10 +132,11 @@
             </li>
             <script>
                 // Code for Q7
-                let userName = prompt("What is your name?").toUpperCase();
-                while (userName !== "JINSOO SON"){
+                let userName ="";
+                do {
                     userName = prompt("what is your name?").toUpperCase();
                 }
+                while (userName !== "JINSOO SON");
                 console.log(`Hello ${userName}`);
             </script>
 
@@ -150,15 +151,7 @@
                     const something = prompt("Enter somthing You want to add");
                     suitcase.push(something);
                 }
-                let message = "The following items are in your suitcase: ";
-                for (let i in suitcase){
-                    if (i == suitcase.length-1){
-                        message += suitcase[i]
-                    }
-                    else{
-                        message += `${suitcase[i]}, `
-                    }
-                }
+                let message = "The following items are in your suitcase: "+ suitcase.join(",");
                 alert(message);
             </script>
 
@@ -172,8 +165,8 @@
                 const voteArr = ["Yes", "Yes", "No", "Yes", "No", "Yes", "No", "Yes", "No", "No", "No", "Yes", "No", "Yes", "No"];
                 let countYes = 0, 
                     countNo = 0;
-                for (let i in voteArr){
-                    if (voteArr[i] == "Yes"){
+                for (let i of voteArr){
+                    if (i == "Yes"){
                         countYes++;
                     }
                     else {
