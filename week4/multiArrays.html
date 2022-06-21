@@ -51,6 +51,11 @@
                     ["D", "E", "F"],
                     ["G", "H", "I"]
                 ];
+                console.log(multiArr1[0][0])
+                console.log(multiArr1[0][2])
+                console.log(multiArr1[1][1])
+                console.log(multiArr1[2][1])
+                console.log(multiArr1[2][2])
             </script>
 
 
@@ -66,6 +71,12 @@
                     ["D", "E", "F"],
                     ["G", "H", "I"]
                 ];
+                for (let i of multiArr2) {
+                    for (let j of i){
+                        console.log(j)
+                    }
+                }
+
             </script>
 
 
@@ -76,11 +87,18 @@
             </li>
             <script>
                 console.log("Q3.");
+                let message = "";
                 const multiArr3 = [
                     ["A", "B"], 
                     ["C", "D", "E", "F", "G"], 
                     ["H", "I", "J"]
                 ];
+                for (let i of multiArr3) {
+                    for (let j of i){
+                        message += `${j}\n`
+                    }
+                }
+                console.log(message)
             </script>
 
 
@@ -95,29 +113,66 @@
                 const philippinesArr = ["Manila", "Quezon City"];
                 const tunisiaArr = ["Tunis"];
 
-                const worldArr = [];
-            </script>
+                const worldArr = [
+                    canadaArr,
+                    koreaArr,
+                    philippinesArr,
+                    tunisiaArr
+                ];
+                for (let i of worldArr){
+                    for (let j of i){
+                        console.log(j)
+                    }
+                }
+                </script>
 
 
-            <li><em>Create MultiArray and Log all Cities 2</em>
-            <br/>
-            Extend the code above to so that each city is preceded by a number and a period representing the order in which they are console.logged e.g. 1. Vancouver, 2. Toronto, 3. Victoria, 4. Seoul etc. Create new loops below to show these logs. No need to create the array again.
-            </li>
-            <script>
-                console.log("Q5.");
+<li><em>Create MultiArray and Log all Cities 2</em>
+    <br/>
+    Extend the code above to so that each city is preceded by a number and a period representing the order in which they are console.logged e.g. 1. Vancouver, 2. Toronto, 3. Victoria, 4. Seoul etc. Create new loops below to show these logs. No need to create the array again.
+</li>
+<script>
+    console.log("Q5.");
+    let order = 0;
+    for (let i of worldArr){
+        for (let j of i){
+            order ++;
+            console.log(order+". "+j);
+        }
+    }
+    </script>
 
-            </script>
 
+<li><em>Create MultiArray of Months</em>
+    <br/>
+    Create 4 arrays holding 3 strings each. These arrays should represent each season and their strings should represent each month in that season. Add these arrays as elements into a new multidimensional array which you should name "year". Create 4 separate console.logs that should read "Array 1 has: 1. March, 2. April, 3. May". "Array 2 has: 1. June, 2. July, 3. August" etc. 
+</li>
+<script>
+    console.log("Q6.");
+    const spring = ["March","April","May"]
+    const summer =["June","July","August"]
+    const fall = ["September","October","November"]
+    const winter = ["December","January","February"]
+const year= [spring,summer,fall,winter];
+let arrNum = 1;
+for (let i of year){
+    let monthNum = 1; 
+    let message = `Array ${arrNum} has: `;
+    for (let j in i){
+         if (monthNum == i.length){
+            message+= `${monthNum}. ${i[j]}`
+         }
+         else {
+            message+= `${monthNum}. ${i[j]}, `
+            monthNum++;
+         }
+        
+    }
+    console.log(message);
+    arrNum++;
+}
+    </script>
 
-            <li><em>Create MultiArray of Months</em>
-            <br/>
-            Create 4 arrays holding 3 strings each. These arrays should represent each season and their strings should represent each month in that season. Add these arrays as elements into a new multidimensional array which you should name "year". Create 4 separate console.logs that should read "Array 1 has: 1. March, 2. April, 3. May". "Array 2 has: 1. June, 2. July, 3. August" etc. 
-            </li>
-            <script>
-                console.log("Q6.");
-
-            </script>
-
-        </ol>
+</ol>
     </body>
 </html>
