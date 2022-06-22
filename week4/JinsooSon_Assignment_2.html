@@ -311,23 +311,26 @@
         const totalNumofStudents = countNumofStudents(students);
         const longestStudentName = getLongestNameinArr(students);
         const numofStudentsContainLetter = countifNameContainsLetter(students, "Mm");
-        const nameStartswithLetterArr = filterNamebyLetter(students, "J");
-        const firstMessage = `There are ${totalNumofStudents} number of students in the array.`,
-              secondMessage = `The longest name in the array is ${longestStudentName}.`,
-              thirdMessage = `There are ${numofStudentsContainLetter} names that contain the letter "m" either in lower or uppercase.`,
-              fourthMessage = `The following names begin with the letter "J": ${nameStartswithLetterArr}.`;
-        console.log(firstMessage);
-        console.log(secondMessage);
-        console.log(thirdMessage);
-        console.log(fourthMessage);
+        const nameStartswithLetterArr = filterNamesContainLetter(students, "J");
+        const firstMessage = `There are ${totalNumofStudents} number of students in the array.`
+        let secondMessage = `The longest name in the array is ${longestStudentName}.`
+        const thirdMessage = `There are ${numofStudentsContainLetter} names that contain the letter "m" either in lower or uppercase.`
+        const fourthMessage = `The following names begin with the letter "J": ${nameStartswithLetterArr}.`
+        if (longestStudentName.includes(",")){
+          secondMessage = `The longest names in the array are ${longestStudentName}.`
+        }
+        console.log(`1. ${firstMessage}\n2. ${secondMessage}\n3. ${thirdMessage}\n4. ${fourthMessage}`)
         function countNumofStudents(arr) {
           return arr.length;
         }
         function getLongestNameinArr(arr){
           let longestName = "";
           for (let name of arr){
-            if (name.length > longestName.length) {
+            if (name.length > longestName.split(", ")[0].length) {
               longestName = name;
+            }
+            else if (name.length == longestName.split(", ")[0].length){
+              longestName += `, ${name}`
             }   
           }
           return longestName;
@@ -345,7 +348,7 @@
           }
           return numofNameContainsLetter;
         }
-        function filterNamebyLetter(arr,letter){
+        function filterNamesContainLetter(arr,letter){
           const filteredArr = [];
           for (let name of arr) {
             if (name.charAt(0) == letter){
