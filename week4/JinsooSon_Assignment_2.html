@@ -223,7 +223,7 @@
             } else if (bottleNum % 4 == 0) {
               arr[indexOfBottle] = "Bang";
             }
-            indexOfElement++;
+            indexOfBottle++;
           }
         }
         // Function 3
@@ -302,14 +302,14 @@
         //   thirdMessage,
         //   fourthMessage,
         // ];
-        const numofStudents = getNumofStudents(students);
+        const numofStudents = countNumofStudents(students);
         console.log(numofStudents);
-        const longestStudentName = getLongestName(students);
-        console.log(longestName);
-        const numberofStudents = countStudentsContainLetter(students, "Mm");
+        const longestStudentName = getLongestNameinArr(students);
+        console.log(longestStudentName);
+        const numberofStudents = countifNameContainsLetter(students, "Mm");
         console.log(numberofStudents);
-        const studentsArr = namesBeginWithLetter(students, "J");
-        console.log(studentsArr);
+        const NameStartswithLetterArr = filterArrbyLetter(students, "J");
+        console.log(NameStartswithLetterArr);
       </script>
     </ol>
   </body>
