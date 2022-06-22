@@ -214,14 +214,14 @@
         // If an element of the array is divided by 6 but not by 4, change the element to "Smash"
         // If an element of the array is divided by 4 but not by 6, change the element to "Bang"
         function checkSmashBangWallop(arr) {
-          let indexOfElement = 0;
-          for (let num of arr) {
-            if (num % 6 == 0 && num % 4 == 0) {
-              arr[indexOfElement] = "Wallop";
-            } else if (num % 6 == 0) {
-              arr[indexOfElement] = "Smash";
-            } else if (num % 4 == 0) {
-              arr[indexOfElement] = "Bang";
+          let indexOfBottle = 0;
+          for (let bottleNum of arr) {
+            if (bottleNum % 6 == 0 && bottleNum % 4 == 0) {
+              arr[indexOfBottle] = "Wallop";
+            } else if (bottleNum % 6 == 0) {
+              arr[indexOfBottle] = "Smash";
+            } else if (bottleNum % 4 == 0) {
+              arr[indexOfBottle] = "Bang";
             }
             indexOfElement++;
           }
@@ -229,8 +229,8 @@
         // Function 3
         // Print a separate console.log for each element.
         function printEachElement(arr) {
-          for (let num of arr) {
-            console.log(num);
+          for (let element of arr) {
+            console.log(element);
           }
         }
       </script>
