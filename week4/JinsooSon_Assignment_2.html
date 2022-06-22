@@ -98,27 +98,39 @@
         // Create a rainbow colours array.
         let rainbowColoursArr =
           "red, orange, yellow, green, blue, indigo, violet".split(", ");
-        // Ask user's favourite colour.
-        const userFavouriteColour = prompt(
-          "What is your favourite colour?"
-        ).toLowerCase();
+        // Ask user's favourite colour.(Function 1)
+        const userFavouriteColour = getUserFavouriteColour();
         // Create a variable for message.
         let colourMessage = "";
-        // If their favourite colour is in the array, remove the colour in the array. (Function 1, Function 2)
-        // Print out the remining colours separated by " *** " in reverse alphabetical order(Z to A). (Function 3, Function 4)
+        // If their favourite colour is in the array, remove the colour in the array. (Function 2, Function 3)
+        // Print out the remining colours separated by " *** " in reverse alphabetical order(Z to A). (Function 4, Function 5)
         if (checkColourinArr(userFavouriteColour, rainbowColoursArr)) {
           removeColourinArr(userFavouriteColour, rainbowColoursArr);
           alignArr(rainbowColoursArr, "Z to A");
           colourMessage = separateColoursbySymbol(rainbowColoursArr, " *** ");
           console.log(colourMessage);
-          // If not, Print out the entire colours separated by " xxx " in alphabetical order(A to Z). (Function 3, Function 4)
+          // If not, Print out the entire colours separated by " xxx " in alphabetical order(A to Z). (Function 4, Function 5)
         } else {
           alignArr(rainbowColoursArr);
           colourMessage = separateColoursbySymbol(rainbowColoursArr, " xxx ");
           console.log(colourMessage);
         }
-        /* 
+        /*
             Function 1
+            If the user input is not valid return an empty string.
+            If not, Lowercase the user input.
+        */
+        function getUserFavouriteColour() {
+          let favouriteColour = prompt("What is your favourite colour?");
+          if (favouriteColour) {
+            return favouriteColour.toLowerCase();
+          }
+          else {
+            return "";
+          }
+        }
+        /* 
+            Function 2
             Check if the colour is in the array.
             If the colour is in the array, return true.
             If not, return false.
@@ -127,7 +139,7 @@
           return arr.includes(colour);
         }
         /*
-            Function 2
+            Function 3
             Find which element of the array the color is.
             Remove the element.
         */
@@ -136,7 +148,7 @@
           arr.splice(colourIndex, 1);
         }
         /*
-            Function 3
+            Function 4
             Sort an array in alphabetical order.
             If sorting method is Z to A, reverse the order.
         */
@@ -147,7 +159,7 @@
           }
         }
         /*
-            Function 4
+            Function 5
             Separate all elements of an array by a certain symbol and return as a string.
         */
         function separateColoursbySymbol(arr, symbol) {
@@ -296,20 +308,55 @@
           "Jericho",
           "Gian",
         ];
-        // const messages = [
-        //   firstMessage,
-        //   secondMessage,
-        //   thirdMessage,
-        //   fourthMessage,
-        // ];
-        const numofStudents = countNumofStudents(students);
-        console.log(numofStudents);
+        const totalNumofStudents = countNumofStudents(students);
         const longestStudentName = getLongestNameinArr(students);
-        console.log(longestStudentName);
-        const numberofStudents = countifNameContainsLetter(students, "Mm");
-        console.log(numberofStudents);
-        const NameStartswithLetterArr = filterArrbyLetter(students, "J");
-        console.log(NameStartswithLetterArr);
+        const numofStudentsContainLetter = countifNameContainsLetter(students, "Mm");
+        const nameStartswithLetterArr = filterNamebyLetter(students, "J");
+        const firstMessage = `There are ${totalNumofStudents} number of students in the array.`,
+              secondMessage = `The longest name in the array is ${longestStudentName}.`,
+              thirdMessage = `There are ${numofStudentsContainLetter} names that contain the letter "m" either in lower or uppercase.`,
+              fourthMessage = `The following names begin with the letter "J": ${nameStartswithLetterArr}.`;
+        console.log(firstMessage);
+        console.log(secondMessage);
+        console.log(thirdMessage);
+        console.log(fourthMessage);
+        function countNumofStudents(arr) {
+          return arr.length;
+        }
+        function getLongestNameinArr(arr){
+          let longestName = "";
+          for (let name of arr){
+            if (name.length > longestName.length) {
+              longestName = name;
+            }   
+          }
+          return longestName;
+        }
+        function countifNameContainsLetter(arr, letters){
+          let numofNameContainsLetter = 0;
+          let copiedArr = arr.slice();
+          for (let letter of letters){
+            for (let name of copiedArr){
+              if (name.includes(letter)){
+                removeNameinArr(copiedArr,name);
+                numofNameContainsLetter++
+              }
+            }
+          }
+          return numofNameContainsLetter;
+        }
+        function filterNamebyLetter(arr,letter){
+          const filteredArr = [];
+          for (let name of arr) {
+            if (name.charAt(0) == letter){
+              filteredArr.push(name);
+            }
+          }
+          return filteredArr.join(", ");
+        }
+        function removeNameinArr(arr,name){
+          arr.splice(arr.indexOf(name),1);
+        }
       </script>
     </ol>
   </body>
