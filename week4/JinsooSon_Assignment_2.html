@@ -121,11 +121,10 @@
             If not, Lowercase the user input.
         */
         function getUserFavouriteColour() {
-          let favouriteColour = prompt("What is your favourite colour?");
+          const favouriteColour = prompt("What is your favourite colour?");
           if (favouriteColour) {
             return favouriteColour.toLowerCase();
-          }
-          else {
+          } else {
             return "";
           }
         }
@@ -144,8 +143,7 @@
             Remove the element.
         */
         function removeColourinArr(colour, arr) {
-          const colourIndex = arr.indexOf(colour);
-          arr.splice(colourIndex, 1);
+          arr.splice(arr.indexOf(colour), 1);
         }
         /*
             Function 4
@@ -215,27 +213,27 @@
         // Function 1
         // Add the first to last bottle number to the array.
         function addArrElements(arr, firstBottleNum, lastBottleNum) {
-          let bottleNum = firstBottleNum;
+          let currentBottleNum = firstBottleNum;
           do {
-            arr.push(bottleNum);
-            bottleNum--;
-          } while (bottleNum >= lastBottleNum);
+            arr.push(currentBottleNum);
+            currentBottleNum--;
+          } while (currentBottleNum >= lastBottleNum);
         }
         // Function 2
         // If an element of the array is divided by 12, change the element to "Wallop"
         // If an element of the array is divided by 6 but not by 4, change the element to "Smash"
         // If an element of the array is divided by 4 but not by 6, change the element to "Bang"
         function checkSmashBangWallop(arr) {
-          let indexOfBottle = 0;
           for (let bottleNum of arr) {
-            if (bottleNum % 6 == 0 && bottleNum % 4 == 0) {
-              arr[indexOfBottle] = "Wallop";
-            } else if (bottleNum % 6 == 0) {
-              arr[indexOfBottle] = "Smash";
+            if (bottleNum % 6 == 0) {
+              if (bottleNum % 4 == 0) {
+                arr[arr.indexOf(bottleNum)] = "Wallop";
+              } else {
+                arr[arr.indexOf(bottleNum)] = "Smash";
+              }
             } else if (bottleNum % 4 == 0) {
-              arr[indexOfBottle] = "Bang";
+              arr[arr.indexOf(bottleNum)] = "Bang";
             }
-            indexOfBottle++;
           }
         }
         // Function 3
@@ -308,57 +306,91 @@
           "Jericho",
           "Gian",
         ];
+        // Count the number of students in the array. (Function 1)
         const totalNumofStudents = countNumofStudents(students);
+        // Run a function that returns the longest name in an array. (Function 2)
         const longestStudentName = getLongestNameinArr(students);
-        const numofStudentsContainLetter = countifNameContainsLetter(students, "Mm");
-        const nameStartswithLetterArr = filterNamesContainLetter(students, "J");
-        const firstMessage = `There are ${totalNumofStudents} number of students in the array.`
-        let secondMessage = `The longest name in the array is ${longestStudentName}.`
-        const thirdMessage = `There are ${numofStudentsContainLetter} names that contain the letter "m" either in lower or uppercase.`
-        const fourthMessage = `The following names begin with the letter "J": ${nameStartswithLetterArr}.`
-        if (longestStudentName.includes(",")){
-          secondMessage = `The longest names in the array are ${longestStudentName}.`
+        // Run a function that returns the number of students whose name contain letter "M or m" (Function3)
+        const numofStudentsContainLetter = countifNameContainsLetter(
+          "Mm",
+          students
+        );
+        // Run a function that returns student's names that start with letter "J" (Function 4)
+        const nameStartswithLetterArr = filterNamesStartwithLetter(
+          "J",
+          students
+        );
+        // Create messages to print out.
+        const firstMessage = `There are ${totalNumofStudents} number of students in the array.`;
+        let secondMessage = `The longest name in the array is ${longestStudentName}.`;
+        const thirdMessage = `There are ${numofStudentsContainLetter} names that contain the letter "m" either in lower or uppercase.`;
+        const fourthMessage = `The following names begin with the letter "J": ${nameStartswithLetterArr}.`;
+        // If there are more than 2 students with the longest name, correct the message to fit the grammar.
+        if (longestStudentName.includes(",")) {
+          secondMessage = `The longest names in the array are ${longestStudentName}.`;
         }
-        console.log(`1. ${firstMessage}\n2. ${secondMessage}\n3. ${thirdMessage}\n4. ${fourthMessage}`)
+        // Print out the messages on the console.
+        console.log(
+          `1. ${firstMessage}\n2. ${secondMessage}\n3. ${thirdMessage}\n4. ${fourthMessage}`
+        );
+        // Function 1
+        // Count the number of elements in the array and Return the number.
         function countNumofStudents(arr) {
           return arr.length;
         }
-        function getLongestNameinArr(arr){
+        // Function 2
+        // Create a variable and store the students' names that are the longest length.
+        // Return the variable.
+        function getLongestNameinArr(arr) {
           let longestName = "";
-          for (let name of arr){
+          for (let name of arr) {
+            // In case more than one student is stored in the variable, split it by ","
+            //, get the first student's name , and compare.
             if (name.length > longestName.split(", ")[0].length) {
               longestName = name;
+              // If the longest name and student name are the same length, add the name to the end.
+            } else if (name.length == longestName.split(", ")[0].length) {
+              longestName += `, ${name}`;
             }
-            else if (name.length == longestName.split(", ")[0].length){
-              longestName += `, ${name}`
-            }   
           }
           return longestName;
         }
-        function countifNameContainsLetter(arr, letters){
+        // Function 3
+        // Count if the student name contains letters.
+        // Return the number.
+        function countifNameContainsLetter(letters, arr) {
           let numofNameContainsLetter = 0;
+          // Copy the array to avoid disrupting the data in the original array.
           let copiedArr = arr.slice();
-          for (let letter of letters){
-            for (let name of copiedArr){
-              if (name.includes(letter)){
-                removeNameinArr(copiedArr,name);
-                numofNameContainsLetter++
+          // For loop to separate the letters.
+          for (let letter of letters) {
+            // For loop to access to the copied array.
+            for (let name of copiedArr) {
+              if (name.includes(letter)) {
+                // To avoid duplicate counts, remove the counted student from the copied array.(Function 5)
+                removeNameinArr(name, copiedArr);
+                numofNameContainsLetter++;
               }
             }
           }
           return numofNameContainsLetter;
         }
-        function filterNamesContainLetter(arr,letter){
+        // Function 4
+        // Create an arr to store students whose name starts with the letter
+        // Join the students as a string and return the string.
+        function filterNamesStartwithLetter(letter, arr) {
           const filteredArr = [];
           for (let name of arr) {
-            if (name.charAt(0) == letter){
+            if (name.charAt(0) == letter) {
               filteredArr.push(name);
             }
           }
           return filteredArr.join(", ");
         }
-        function removeNameinArr(arr,name){
-          arr.splice(arr.indexOf(name),1);
+        // Function 5
+        // Remove the name from the array.
+        function removeNameinArr(name, arr) {
+          arr.splice(arr.indexOf(name), 1);
         }
       </script>
     </ol>
