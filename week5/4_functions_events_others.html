@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Other Functions</title>
+        <style>
+            body {
+                font-family: helvetica;
+            }
+            em { 
+                font-weight: bold; 
+                font-style: normal; 
+                text-decoration: underline; 
+                font-size: 1.2em; 
+            }
+            h1 {
+                text-align:center;
+            }
+            ol {
+                list-style: none;
+                counter-reset: item;
+                width: 700px; 
+                position: relative; 
+                left: 50%; 
+                margin-left: -350px;
+            }
+            ol > li {
+                counter-increment: item;
+                margin-bottom: 20px;
+            }
+            ol > li:before {
+                margin-right: 10px;
+                content: counter(item);
+                background: crimson;
+                border-radius: 100%;
+                color: white;
+                width: 1.3em;
+                text-align: center;
+                display: inline-block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Other Types of Functions & Events</h1>
+
+        <ol>
+        	<li><em>Other Ways of Declaring Functions</em>
+        		<br>
+        		There are other ways of declaring functions as opposed to the way we learned<br>
+        		<code>function myFunc( para ) {<br>
+        		&nbsp;&nbsp;&nbsp;&nbsp;return para<br>
+        		}</code>
+
+        		<script>
+                    const log = (a) => console.log(a);
+        			// OTHER FUNCTIONS
+                    const myFunc = (para) => {
+                        return para
+                    }
+                    log(myFunc("hello")); 
+        		</script>
+        	</li>
+
+        	<li id = "buttons"><em>Events and Functions</em>
+        		<br>
+        		Functions can be called/executed by an event that happens on a webpage<br><br>
+        		<button id="button1">Button 1</button>
+        		<button id="button2">Button 2</button>
+        		<button id="button3">Button 3</button>
+        		<button id="button4">Button 4</button>
+        		<br><br>
+
+        		<select>
+        			<option value="1">One</option>
+        			<option value="2">Two</option>
+        			<option value="3">Three</option>
+        		</select>
+
+        		<script>
+        			// EVENTS
+        			//
+                    const button1 = document.getElementById("button1")
+                    const button2 = document.getElementById("button2")
+                    const button3 = document.getElementById("button3")
+                    const button4 = document.getElementById("button4")
+                    document.getElementById()
+                    button1.onclick = function (event) {
+                    }
+                    button2.onclick = function (event){
+
+                    }
+                    button3.onclick = function (event){
+
+                    }
+                    button4.onclick = function (event){
+
+                    }
+                    
+        		</script>
+        	</li>
+            
+        </ol>
+    </body>
+</html>
