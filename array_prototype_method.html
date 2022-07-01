@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="hello">
+        Hello
+    </h2>
+    <script>
+        const log =(a) => console.log(a)
+        function forEachFn(arr, func){
+            for(let el of arr){
+                func(el);
+            }
+        }
+        const a = [1,2,3,4];
+        const b = []
+        forEachFn(a,(el) => b.push(el));
+        log(b);
+        let elIndex = 0;
+        
+        // foreach 명령어
+
+        //arr.forEach(element => func) 
+        //각각의 element에 접근해 함수실행
+
+        a.forEach(element => {
+            a[elIndex] ++;
+            elIndex = elIndex +1;
+        });
+        log(a);
+
+
+
+
+        function someFn(arr, func) {
+            for(let el of arr){
+                const result = func(el);
+                if(result) return true;
+            }
+            return false;
+        }
+        const testArr = [2,4,6,8,2];
+        const testArr2 = [2,5,6,8,2];
+        const testArr3 = [2,4,7,8,2];
+        const testArr4 = [2,4,[],6,7]
+        const text = ""
+        function changeInnerText(text){
+            return text+"3"
+        }
+        const result = (3>4) ? log(true) : document.getElementById("hello").innerText = changeInnerText(text);
+        
+        
+        //some 명령어 
+
+        //arr.some(elemnet => condition(function도 가능 true or false 반환하는)) 
+        //조건을 만족하는 요소가 하나라도 있으면 true, 없으면 false
+
+        log(testArr2.some(el => el%2==1) ? 1 : 2);
+        log(testArr4.some(el => typeof(el) !== "number") ? "There is an element which is not a number." : "All elements are numbers");        
+        
+        
+        
+        
+        //every 명령어
+        
+        //arr.every(element => condition(function도 가능 true or false 반환하는))
+        //모든요소가 조건 만족시 true, 아니면 false
+        
+        log(testArr.every(el => el%2==0));
+
+        
+        
+        
+        //find 명령어
+        
+        //arr.find(element => func(true false 반환형))
+        // func를 충족하는 첫번째 element 반환, 없으면 undefined 반환
+        
+        log(testArr.find(element => element > 2));
+        
+
+
+
+        // findIndex 명령어
+
+        // arr.findIndex(element => func(true false 반환형))
+        // func를 충족하는 첫번째 element index값 반환, 없으면 -1 반환
+
+
+        log(testArr.findIndex(element => element > 2));
+        
+        
+
+
+        // filter 명령어
+
+        // arr.filter(element => func)
+        // func를 충족하는 element들의 배열 반환
+
+        log(testArr2.filter(element => element % 2 === 0))
+        
+
+        // map 명령어
+
+        // arr.map(element => func) 
+        // 각 요소에 func 실행해 값을 변경하고 새로운 배열 반환 
+        
+        
+        // reduce 명령어
+        // arr.reduce((accumulator, currentValue) => func)
+        // 함수를 각요소로 실행하는데 accumulator가 
+        // func(currentValue)한 값이된다.
+        // initialValue 설정시 첫 accumulator 가 initialValue로 시작
+        // default accumulator = arr[0];
+        // initialValue 설정법 arr.reduce(func(acc,crr),initalVal)
+
+
+
+        
+        // 삼항 연산자 (조건문(함수도가능이겠지))
+        // (condition) ? codeforTrue : codeforFalse
+
+        // Extention
+
+        // (condition) ? codeforTrue
+        //             : (another condition) ? codeforTrue
+        //             : codeforFalse
+        
+
+    </script>
+</body>
+</html>
