@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Objects & Methods</title>
+        <style>
+            body {
+                font-family: helvetica;
+            }
+            em { 
+                font-weight: bold; 
+                font-style: normal; 
+                text-decoration: underline; 
+                font-size: 1.2em; 
+            }
+            h1 {
+                text-align:center;
+            }
+            ol {
+                list-style: none;
+                counter-reset: item;
+                width: 700px; 
+                position: relative; 
+                left: 50%; 
+                margin-left: -350px;
+            }
+            ol > li {
+                counter-increment: item;
+                margin-bottom: 20px;
+            }
+            ol > li:before {
+                margin-right: 10px;
+                content: counter(item);
+                background: crimson;
+                border-radius: 100%;
+                color: white;
+                width: 1.3em;
+                text-align: center;
+                display: inline-block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Objects</h1>
+        <script>
+        	// ==============
+        	// Object Methods
+        	// ==============
+        	
+        </script>
+
+        <ol>
+        	<li><em>Fix Object with Methods Errors</em>
+                <br/>
+                Below is an object literal created with mistakes. Fix the errors and console.log the object. Call both of the methods and view the results in the console. Make sure both object methods are not arrow functions.
+            </li>
+            <script>
+            	let qNum = 1;
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+                
+            	const favouriteObj = {
+            		colour: "brown",
+            		movie: "Gladiator",
+            		myFavouriteThings() {
+                        console.log("My Fav things are " + this.colour + " " + this.movie);
+                    },
+                    squareNumber(num) {
+                        return num * num;
+                    }
+            	}
+                favouriteObj.myFavouriteThings();
+                console.log(favouriteObj.squareNumber(2));
+                
+            </script>
+
+
+            <li><em>Create an Object with 2 Methods</em>
+                <br/>
+                Create an object literal that has 1 property (your name) and 2 methods. The first method should console.log "Hello name" where name is the property value in the object. The second method should console.log "I am currently in X" where X is a parameter which you can provide to the method. If no parameter is given, console.log "I am currently in Vancouver". Call both functions in the code.
+            </li>
+            <script>
+                qNum++; // Q2
+                console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+
+                const myName = {
+                    name : "Jinsoo Son",
+                    helloMyname() {
+                        console.log("Hello " + this.name)
+                    },
+                    currentCity(city) {
+                        (city) ? console.log("I am currently in " + city) : console.log("I am currently in Vancouver");
+                    }
+                }
+                myName.helloMyname();
+                myName.currentCity(prompt("Where do you live?"));
+                myName.valueOfParams = function (params){ alert(params) };
+                myName.valueOfParams(prompt("Val"));
+            </script>
+
+
+            <li><em>Add New Method to Existing Object</em>
+                <br/>
+                Using the object you created above, add a new method to it. Have this method accept a parameter and then alert the value of this parameter when called. Call this new method in the code.
+            </li>
+            <script>
+                qNum++; // Q3
+                console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+                
+                         </script>
+
+
+            <li><em>Loop over Object but Skip Methods</em>
+                <br/>
+                You are provided a simple object below that contains properties and methods. Use a for in loop, to loop through each item and for each, console.log the "key = value". Do this only for the properties. Do not log any of the methods.
+            </li>
+            <script>
+                qNum++; // Q4
+                console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+                const bigObject = {
+                    tv: "Samsung",
+                    phone: "Apple",
+                    car: "VW",
+                    aFunc: function() {
+                        console.log("Hello A");
+                    },
+                    house: "condo",
+                    animals: ["bird", "snake"],
+                    bFunc: function() {
+                        console.log("Hello B");
+                    },
+                    cFunc: function() {
+                        console.log("Hello C");
+                    },
+                    wallet: "leather"
+                }
+                let bigObjectMessage = "";
+                for (let i in bigObject) {
+                    (typeof(bigObject[i]) !== "function") ? bigObjectMessage += `${i} = ${bigObject[i]}\n`: null;
+                }
+                console.log(bigObjectMessage);
+
+
+                
+            </script>
+
+        </ol>
+    </body>
+</html>

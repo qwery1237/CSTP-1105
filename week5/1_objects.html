@@ -58,18 +58,21 @@
             	let qNum = 1;
             	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
 
-                /*
-            	const favouriteObj = (
-            		colour = "brown";
-            		movie = "Gladiator"
-            		song = "Oops I did it again"
-            		food = "Hot dog";
-            		number = 7;
-            	)
-            	console.log(favouriteobj);
-            	console.log(favouriteObj[colour]);
-                */
-            </script>
+                
+            	const favouriteObj = {
+            		colour : "brown",
+            		movie : "Gladiator",
+            		song : "Oops I did it again",
+            		food : "Hot dog",
+            		number : 7
+                }
+            	console.log(favouriteObj);
+            	console.log(favouriteObj["colour"]);
+            	console.log(favouriteObj.movie);
+            	console.log(favouriteObj.song);
+            	console.log(favouriteObj.food);
+            	console.log(favouriteObj.number);
+                </script>
 
 
             <li><em>Create your own Object Literal</em>
@@ -79,6 +82,27 @@
             <script>
             	qNum++;
             	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+                const myFamilyObj = {
+                    father : {
+                        name : "Son Seongmin",
+                        age : "52",
+                        haircolour : "black"    
+                    },
+                    mother : {
+                        name : "Kim Heeyoung",
+                        age : "52",
+                        haircolour : "black"    
+                    },
+                    sister : {
+                        name : "Son Eunsoo",
+                        age : "22",
+                        haircolour : "black"    
+                    }
+                }
+                for (let member in myFamilyObj){
+                    const message = `My ${member}'s name is ${myFamilyObj[member].name}`
+                    console.log(message);
+                }
 
             </script>
 
@@ -90,7 +114,13 @@
             <script>
             	qNum++;
             	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
-
+                const countryCapitalsObj = {
+                   canada : "Ottawa",
+                   usa : "Washington, D.C.",
+                   mexico : "Mexico City",
+                   uk : "London", 
+                }
+                console.log(countryCapitalsObj);
             </script>
 
 
@@ -101,6 +131,10 @@
             <script>
             	qNum++;
             	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+                countryCapitalsObj.canada = "Vancouver"
+                countryCapitalsObj.france = "Paris"
+                countryCapitalsObj.italy = "Rome"
+                console.log(countryCapitalsObj);
 
             </script>
 
@@ -114,7 +148,14 @@
             <script>
             	qNum++;
             	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
-
+                const myself = {
+                    name : "Jinsoo Son",
+                    yearOfBirth : 1996,
+                    address : "6028 Willingdon Ave. Burnaby. BC",
+                    hobbies : [1,2,3,4,5],
+                    isEnrolledInVCC : true
+                }
+                console.log(myself);
             </script>
 
 
@@ -131,7 +172,10 @@
             <script>
             	qNum++;
             	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
-
+                (myself.isEnrolledInVCC) ? console.log("I am a student") : null;
+                (myself.hobbies) ? console.log(`My hobbies are ${myself.hobbies.join(", ")}`) : null;
+                (myself.occupation) ? console.log(`My occupation is ${myself.occupation}.`) : myself.occupation = prompt("What is your occupation?");
+                console.log(myself);
             </script>
 
 
@@ -146,6 +190,11 @@
             <script>
             	qNum++;
             	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+                let message = ""
+                for (let myInfo in myself){
+                    message += `${myInfo} = ${myself[myInfo]}\n`
+                }
+                console.log(message);
 
             </script>
 
@@ -167,9 +216,16 @@
             		"A": 0,
             		"B": 0,
             		"C": 0
-            	};
-
-            </script>
+            	}; 
+                lettersObj.A = lettersArr.filter(letter => letter === "A").length 
+                lettersObj.B = lettersArr.filter(letter => letter === "B").length
+                lettersObj.C = lettersArr.filter(letter => letter === "C").length
+                let abcMessage = ""
+                for (let key in lettersObj){
+                    abcMessage += `${key} = ${lettersObj[key]}\n`;
+                }
+                console.log(abcMessage);
+                </script>
         </ol>
     </body>
 </html>
