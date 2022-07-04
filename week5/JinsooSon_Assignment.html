@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assignment 3</title>
+    <style>
+      body {
+        font-family: helvetica;
+      }
+      h1 {
+        color: crimson;
+      }
+      em {
+        font-weight: bold;
+        font-style: normal;
+        text-decoration: underline;
+        font-size: 1.2em;
+      }
+      li {
+        margin: 20px;
+      }
+      ol {
+        width: 700px;
+        position: relative;
+        left: 50%;
+        margin-left: -350px;
+      }
+      ol > li > ol > li {
+        margin: 10px;
+      }
+      p {
+        width: 700px;
+        position: relative;
+        left: 50%;
+        margin-left: -350px;
+      }
+      h1,
+      h2 {
+        text-align: center;
+      }
+      ul > li {
+        margin-top: 0;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Introduction to Programming Assignment 3</h1>
+    <h2>Objects</h2>
+
+    <p>
+      Complete the following tasks. Name your html file
+      <span style="font-size: 1.05rem; color: blue"
+        ><em>Name</em>_Assignment_3</span
+      >
+      and submit it before the deadline.
+      <br />
+      <em>60%</em> of the marks will go to successfully completing the tasks
+      free of errors.
+      <br />
+      <em>20%</em> of the marks will go to how well you comment your code. This
+      also incorporates good naming conventions for variables &
+      <strong>proper formatting/organisation of your code</strong>.
+      <br />
+      <em>20%</em> of the marks will go to how efficient your code is using the
+      methods you have learned up to this point.
+    </p>
+
+    <ol>
+      <li>
+        <em>Detailed Country Objects</em>
+        <br />
+        <ul>
+          <li>Create 3 objects. An object for America, France and UK.</li>
+          <li>
+            Have these objects store the following properties: name, population,
+            capital and isMonarchy (a boolean indicating whether the country has
+            a monarchy or not). Assign the correct values for each of these
+            properties.
+          </li>
+          <li>
+            Have these objects store a method called stateDetails which
+            <strongs>returns</strongs> the following string<br /><br />
+            "X is a country with a population of X and the capital city is X.
+            This country <u>is/is not</u> a monarchy."<br /><br />
+            Make sure to use "is" or "is not" to say whether the country is a
+            monarchy or not.
+          </li>
+          <li>Place these 3 objects in an array.</li>
+          <li>
+            Create a function that takes in an array (the array of objects) as a
+            parameter.
+          </li>
+          <li>
+            Have this function loop through the array and console.log the
+            stateDetails() method from each object so that we see each country's
+            description in the console.
+          </li>
+        </ul>
+      </li>
+
+      <script>
+        // ====================
+        // 1.) Detailed Country Objects
+        // ====================
+        const log = (el) => console.log(el);
+
+        // Function 1
+        // Get 4 parameters(name, population, capital, isMonarchy(boolean type))
+        // Create a message that meets the condition (isMonarchy)
+        //
+        const message = (name, population, capital, isMonarchy) => {
+          return isMonarchy
+            ? `${name} is a country with a population of ${population} ` +
+                `and the capital city is ${capital}. This country is a monarchy.`
+            : `${name} is a country with a population of ${population} ` +
+                `and the capital city is ${capital}. This country is not a monarchy.`;
+        };
+        // Function 2
+        // Take an array of object as a parameter
+        // Console log the returned value of the function(stateDetails) in each object
+        //
+        const logContriesDetails = (arr) =>
+          arr.forEach((el) => log(el.stateDetails()));
+
+        // Create each contrie's object and an array that contains all objects
+        // stateDetails call message function and give 4 pieces of infomation to the function (function1)
+        //
+        const contries = [];
+        const americaObj = {
+          name: "America",
+          population: 332403650,
+          capital: "Washington, D.C",
+          isMonarchy: false,
+          stateDetails() {
+            return message(
+              this.name,
+              this.population,
+              this.capital,
+              this.isMonarchy
+            );
+          },
+        };
+        const franceObj = {
+          name: "France",
+          population: 65561783,
+          capital: "Paris",
+          isMonarchy: false,
+          stateDetails() {
+            return message(
+              this.name,
+              this.population,
+              this.capital,
+              this.isMonarchy
+            );
+          },
+        };
+        const ukObj = {
+          name: "UK",
+          population: 68497907,
+          capital: "London",
+          isMonarchy: true,
+          stateDetails() {
+            return message(
+              this.name,
+              this.population,
+              this.capital,
+              this.isMonarchy
+            );
+          },
+        };
+        contries.push(americaObj, franceObj, ukObj);
+        //
+        //Run Function2
+        logContriesDetails(contries);
+      </script>
+
+      <li>
+        <em>Counting Items in Huge Array</em>
+        <br />
+        The array below contains a bunch of strings in various amounts. Create
+        an object to help you count each element in the array and in a single
+        console.log, log the following:<br /><br />
+        "A = ?<br />
+        B = ?<br />
+        C = ?<br />
+        ...<br />
+        Z = ?"<br /><br />
+        where ? is the number of times that the letter appears in the array.
+        Each letter that appears in the array should be present in this log.
+        Finally, console.log "<strong>$</strong> appears the most in the array
+        at <strong>@</strong> times" where <strong>$</strong> is the most common
+        letter and <strong>@</strong> is the number of times it is present in
+        the array.
+        <p>
+          <strong
+            >Read this part if you are having difficulty coming up with a
+            solution.</strong
+          >
+          You have completed a question that resembles this in the In Class
+          Tasks. However there are probably too many letters in this array for
+          you to hard code them in as properties. Come up with a system that
+          loops through the array, creates properties representing the letters
+          if they are discovered for the first time, and increments the count on
+          subsequent iterations in the loop when the letter is seen again. The
+          object method <code>hasOwnProperty()</code>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty"
+            >might be useful here.</a
+          >
+        </p>
+      </li>
+
+      <script>
+        // ===================
+        // 2.) Counting Items in Huge Array
+        // ===================
+        //The array changes automatically because Pretier extension is installed.
+        const bigLettersArr = [
+          "X",
+          "E",
+          "Q",
+          "M",
+          "L",
+          "L",
+          "L",
+          "B",
+          "X",
+          "C",
+          "A",
+          "F",
+          "X",
+          "W",
+          "B",
+          "W",
+          "A",
+          "F",
+          "D",
+          "Z",
+          "B",
+          "C",
+          "L",
+          "F",
+          "M",
+          "E",
+          "B",
+          "E",
+          "A",
+          "M",
+          "L",
+          "L",
+          "B",
+          "G",
+          "L",
+          "G",
+          "H",
+          "F",
+          "H",
+          "G",
+          "M",
+          "A",
+          "F",
+          "B",
+          "B",
+          "C",
+          "G",
+          "F",
+          "H",
+          "Z",
+          "B",
+          "L",
+          "L",
+          "H",
+          "J",
+          "L",
+          "L",
+          "C",
+          "A",
+          "M",
+          "A",
+          "X",
+          "W",
+          "K",
+          "W",
+          "A",
+          "J",
+          "B",
+          "L",
+          "C",
+          "A",
+          "M",
+          "B",
+          "K",
+          "M",
+          "R",
+          "A",
+          "L",
+          "L",
+          "B",
+          "G",
+          "W",
+          "J",
+          "F",
+          "H",
+          "Z",
+          "B",
+          "L",
+          "L",
+          "H",
+          "U",
+          "L",
+          "L",
+          "C",
+          "A",
+          "P",
+          "U",
+          "X",
+          "W",
+          "K",
+          "W",
+          "A",
+          "J",
+          "R",
+          "T",
+          "C",
+          "A",
+          "M",
+          "L",
+          "K",
+          "U",
+          "E",
+          "U",
+          "B",
+          "U",
+          "B",
+          "G",
+          "W",
+          "J",
+          "F",
+          "X",
+          "E",
+          "Q",
+          "M",
+          "L",
+          "L",
+          "O",
+          "B",
+          "X",
+          "C",
+          "A",
+          "F",
+          "X",
+          "W",
+          "I",
+          "W",
+          "A",
+          "F",
+          "K",
+          "Z",
+          "B",
+          "C",
+          "L",
+          "F",
+          "M",
+          "E",
+          "I",
+          "E",
+          "A",
+          "M",
+          "L",
+          "L",
+          "B",
+          "G",
+          "L",
+          "G",
+          "H",
+          "F",
+          "H",
+          "G",
+          "D",
+          "A",
+          "F",
+          "B",
+          "B",
+          "C",
+          "G",
+          "F",
+          "K",
+          "Z",
+          "R",
+          "L",
+          "L",
+          "H",
+          "J",
+          "L",
+          "L",
+          "C",
+          "A",
+          "M",
+          "A",
+          "X",
+          "W",
+          "K",
+          "W",
+          "A",
+          "N",
+          "B",
+          "L",
+          "C",
+          "A",
+          "M",
+          "B",
+          "K",
+          "M",
+          "R",
+          "A",
+          "N",
+          "L",
+          "B",
+          "G",
+          "W",
+          "J",
+          "F",
+          "H",
+          "Z",
+          "B",
+          "L",
+          "N",
+          "H",
+          "U",
+          "L",
+          "D",
+          "C",
+          "A",
+          "M",
+          "U",
+          "X",
+          "W",
+          "K",
+          "W",
+          "A",
+          "J",
+          "R",
+          "T",
+          "C",
+          "A",
+          "M",
+          "P",
+          "K",
+          "U",
+          "D",
+          "U",
+          "B",
+          "U",
+          "B",
+          "G",
+          "W",
+          "J",
+          "F",
+        ];
+        // Create an array which has 26 empty elements
+        // Calculate the ASCII code value by adding 65 to the index value of each element
+        // Change the value of element to the appropriate letter. (Order : A to Z)
+        const aToZarr = Array(26)
+          .fill()
+          .map((_, i) => String.fromCharCode(i + 65));
+        // Create an array which has 26 empty elements
+        // Return the number of each letter in the array(bigLettersArr)
+        // and change the value of each element to the returned value. (Order : A to Z)
+        const numOfEachLetterArr = Array(26)
+          .fill()
+          .map((_, i) => bigLettersArr.filter((el) => el == aToZarr[i]).length);
+        // Create a variable to log the number of each letter in the array
+        //(Two arrays are accessible with one indexing because their order are the same)
+        // Access each element to get information and add the information to the message.
+        let message2 = "";
+        aToZarr.forEach(
+          (el, i) => (message2 += `${el} = ${numOfEachLetterArr[i]}\n`)
+        );
+        log(message2);
+        // Access numOfEachLetterArr and get the largest number in the array.
+        const largestNumOfLetter = numOfEachLetterArr.reduce(
+          (largestNum, currentNum) =>
+            largestNum > currentNum ? largestNum : currentNum
+        );
+        // Get letters which are the most common in the array.
+        const mostCommonletter = aToZarr
+          .filter((_, i) => numOfEachLetterArr[i] == largestNumOfLetter)
+          .join(", ");
+        // Create a message to print out the most common letters and the number of the letter in the array.
+        let message3 = mostCommonletter.includes(",")
+          ? `${mostCommonletter} appear the most in the array at ${largestNumOfLetter} times.`
+          : `${mostCommonletter} appears the most in the array at ${largestNumOfLetter} times.`;
+        log(message3);
+      </script>
+    </ol>
+  </body>
+</html>
