@@ -464,6 +464,7 @@
         const aToZarr = Array(26)
           .fill()
           .map((_, i) => String.fromCharCode(i + 65));
+        
         // Create an array which has 26 empty elements
         // Return the number of each letter in the array(bigLettersArr)
         // and change the value of each element to the returned value. (Order : A to Z)
@@ -479,10 +480,11 @@
         );
         log(message2);
         // Access numOfEachLetterArr and get the largest number in the array.
-        const largestNumOfLetter = numOfEachLetterArr.reduce(
-          (largestNum, currentNum) =>
-            largestNum > currentNum ? largestNum : currentNum
-        );
+        // const largestNumOfLetter = numOfEachLetterArr.reduce(
+        //   (largestNum, currentNum) =>
+        //     largestNum > currentNum ? largestNum : currentNum
+        // );
+        const largestNumOfLetter = Math.max(...numOfEachLetterArr);
         // Get letters which are the most common in the array.
         const mostCommonletter = aToZarr
           .filter((_, i) => numOfEachLetterArr[i] == largestNumOfLetter)

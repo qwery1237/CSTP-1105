@@ -88,12 +88,12 @@
                     helloMyname() {
                         console.log("Hello " + this.name)
                     },
-                    currentCity(city) {
-                        (city) ? console.log("I am currently in " + city) : console.log("I am currently in Vancouver");
+                    currentCity(city = 'Vancouver') {
+                        console.log("I am currently in " + city);
                     }
                 }
                 myName.helloMyname();
-                myName.currentCity(prompt("Where do you live?"));
+                myName.currentCity();
                 myName.valueOfParams = function (params){ alert(params) };
                 myName.valueOfParams(prompt("Val"));
             </script>
