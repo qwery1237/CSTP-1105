@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JSON</title>
+        <style>
+            body {
+                font-family: helvetica;
+            }
+            em { 
+                font-weight: bold; 
+                font-style: normal; 
+                text-decoration: underline; 
+                font-size: 1.2em; 
+            }
+            h1 {
+                text-align:center;
+            }
+            ol {
+                list-style: none;
+                counter-reset: item;
+                width: 700px; 
+                position: relative; 
+                left: 50%; 
+                margin-left: -350px;
+            }
+            ol > li {
+                counter-increment: item;
+                margin-bottom: 20px;
+            }
+            ol > li:before {
+                margin-right: 10px;
+                content: counter(item);
+                background: crimson;
+                border-radius: 100%;
+                color: white;
+                width: 1.3em;
+                text-align: center;
+                display: inline-block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>JSON</h1>
+        <script>
+        	// ==============
+        	// JSON Basics
+        	// ==============
+
+            const jsonString = `[
+  {
+    "_id": "62c36f3e1de35d97681c6865",
+    "index": 0,
+    "isActive": false,
+    "balance": "$2,105.61",
+    "age": 37,
+    "eyeColor": "brown",
+    "name": "Conner Pacheco",
+    "gender": "male",
+    "company": "ZAJ",
+    "phone": "+1 (870) 596-2569",
+    "address": "309 Sedgwick Place, Stevens, New York, 3380",
+    "registered": "2016-01-30T04:29:46 +08:00",
+    "tags": [
+      "voluptate",
+      "cupidatat",
+      "qui",
+      "excepteur",
+      "ea",
+      "consequat",
+      "dolore"
+    ],
+    "parents": {
+      "mother": "Lesley",
+      "father": "Dyer"
+    },
+    "friends": [
+      {
+        "id": 0,
+        "name": "Lessie Lloyd"
+      },
+      {
+        "id": 1,
+        "name": "Lana Mclaughlin"
+      },
+      {
+        "id": 2,
+        "name": "Emerson Bailey"
+      }
+    ]
+  },
+  {
+    "_id": "62c36f3eb5753c786fc2c5f1",
+    "index": 1,
+    "isActive": false,
+    "balance": "$2,703.67",
+    "age": 33,
+    "eyeColor": "blue",
+    "name": "Polly Chase",
+    "gender": "female",
+    "company": "ZENTILITY",
+    "phone": "+1 (964) 460-2083",
+    "address": "312 Seaview Court, Saddlebrooke, Maryland, 7692",
+    "registered": "2019-11-08T10:27:15 +08:00",
+    "tags": [
+      "consequat",
+      "occaecat",
+      "quis",
+      "aliqua",
+      "qui",
+      "ea",
+      "sint"
+    ],
+    "parents": {
+      "mother": "Gloria",
+      "father": "Fields"
+    },
+    "friends": [
+      {
+        "id": 0,
+        "name": "Colette Kelly"
+      },
+      {
+        "id": 1,
+        "name": "Dominguez Fitzgerald"
+      },
+      {
+        "id": 2,
+        "name": "Rae Nash"
+      }
+    ]
+  },
+  {
+    "_id": "62c36f3efca1596b3458f355",
+    "index": 2,
+    "isActive": false,
+    "balance": "$1,270.83",
+    "age": 37,
+    "eyeColor": "brown",
+    "name": "Sheppard Huff",
+    "gender": "male",
+    "company": "SENTIA",
+    "phone": "+1 (985) 506-3754",
+    "address": "700 Ash Street, Ellerslie, Tennessee, 5174",
+    "registered": "2016-02-24T07:34:58 +08:00",
+    "tags": [
+      "id",
+      "nulla",
+      "anim",
+      "sint",
+      "fugiat",
+      "qui",
+      "aute"
+    ],
+    "parents": {
+      "mother": "Candice",
+      "father": "Kathie"
+    },
+    "friends": [
+      {
+        "id": 0,
+        "name": "Genevieve Chambers"
+      },
+      {
+        "id": 1,
+        "name": "Lancaster Parks"
+      },
+      {
+        "id": 2,
+        "name": "Shaw Gallagher"
+      }
+    ]
+  },
+  {
+    "_id": "62c36f3e1a35b1d1d29b8587",
+    "index": 3,
+    "isActive": true,
+    "balance": "$1,467.53",
+    "age": 39,
+    "eyeColor": "green",
+    "name": "Freeman Villarreal",
+    "gender": "male",
+    "company": "GEEKWAGON",
+    "phone": "+1 (848) 488-2899",
+    "address": "300 Hooper Street, Eagleville, New Hampshire, 1346",
+    "registered": "2018-08-24T07:03:32 +07:00",
+    "tags": [
+      "esse",
+      "voluptate",
+      "consectetur",
+      "quis",
+      "excepteur",
+      "consequat",
+      "ut"
+    ],
+    "parents": {
+      "mother": "Sherrie",
+      "father": "Berg"
+    },
+    "friends": [
+      {
+        "id": 0,
+        "name": "Nixon Nguyen"
+      },
+      {
+        "id": 1,
+        "name": "Edwina Shelton"
+      },
+      {
+        "id": 2,
+        "name": "Farrell Valdez"
+      }
+    ]
+  }
+]`;
+console.log(JSON.parse(jsonString));
+        </script>
+
+        <p>Console.log the following information from the supplied JSON. Each question answer should be contained in a single console.log. Make sure to JSON.parse th JSON data at the start to convert it into a format JavaScript can work with.</p>
+
+        <ol>
+        	<li><em>The first person's eye colour and age</em>
+                <br/>
+                Answer = "brown, 37"
+            </li>
+            <script>
+            	let qNum = 1; // 1
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+              const log = a => console.log(a);
+            const jsonToJs = JSON.parse(jsonString);
+            log(jsonToJs[0].eyeColor);
+            log(jsonToJs[0].age); 
+            </script>
+
+
+
+            <li><em>The last person's name and gender</em>
+                <br/>
+                Answer = "Freeman Villarreal, male"
+            </li>
+            <script>
+            	qNum++; // 2
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+              log(jsonToJs[jsonToJs.length-1].name);
+              log(jsonToJs[jsonToJs.length-1].gender);
+            </script>
+
+
+
+            <li><em>Polly Chase's Mother and Fathers' name.</em>
+                <br/>
+                Answer = "Gloria and Fields"
+            </li>
+            <script>
+            	qNum++; // 3
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+              jsonToJs.forEach((obj)=> obj.name == "Polly Chase" ? log(Object.values(obj.parents).join(" and ")) : null);
+            </script>
+
+
+
+            <li><em>The company name's of all the people that are listed as not being isActive e.g. isActive = false. You should start to use loops going forward.</em>
+                <br/>
+                Answer = "ZAJ, ZENTILITY, SENTIA"
+            </li>
+            <script>
+            	qNum++; // 4
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+              log(jsonToJs.filter((obj)=> obj.isActive == false).reduce((acc,crr) => { return acc +`${crr.company}, `},""));
+            </script>
+
+
+
+            <li><em>The average age of all people.</em>
+                <br/>
+                Answer = "36.5"
+            </li>
+            <script>
+                qNum++; // 5
+                console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+              log(jsonToJs.reduce((acc,crr) => { return acc + crr.age },0)/jsonToJs.length);
+            </script>
+
+
+
+            <li><em>The average age of all people that have "brown" eye colour.</em>
+                <br/>
+                Answer = "37"
+            </li>
+            <script>
+                qNum++; // 6
+                console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+              log(jsonToJs.filter(obj => obj.eyeColor == "brown").reduce((acc,crr) => { return acc + crr.age},0)/jsonToJs.filter(obj => obj.eyeColor == "brown").length)
+            </script>
+
+
+
+            <li><em>The first friend of each person.</em>
+                <br/>
+                Answer = "Lesslie Lloyd, Colette Kelly, Genevieve Chambers, Nixon Nguyen"
+            </li>
+            <script>
+                qNum++; // 6
+                console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+              log(jsonToJs.reduce((acc,crr) => {return acc + `${crr.friends[0].name}, `},""));
+            </script>
+
+
+            <li><em>The father's name for each person over the age of 35.</em>
+                <br/>
+                Answer = "Dyer, Kathie, Berg"
+            </li>
+            <script>
+            	qNum++; // 5
+            	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+              log(jsonToJs.filter(obj => obj.age > 35).reduce((acc,crr) => {return acc + `${crr.parents.father}, `},""));
+
+            </script>
+        </ol>
+    </body>
+</html>
