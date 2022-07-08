@@ -58,20 +58,20 @@
             	let qNum = 1; // 1
             	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
 
-            	class TeenageMutantNinjaTurtles(name, weapon) {
-				  	constructor() {
-				    	this.name = this.name;
-				    	weapon = weapon;
-				  	},
+            	class TeenageMutantNinjaTurtles {
+				  	constructor(name, weapon) {
+				    	this.name = name;
+				    	this.weapon = weapon;
+				  	}
 				  	sayCowabunga() {
-				  		console.log(name + " says Cowabunga");
+				  		console.log(this.name + " says Cowabunga");
 				  	}
 				}
 
-				const leonardo = TeenageMutantNinjaTurtles("Leonardo", "Sword");
+				const leonardo = new TeenageMutantNinjaTurtles("Leonardo", "Sword");
 
 				console.log(leonardo);
-				leonardo.sayCowabunga;
+				leonardo.sayCowabunga();
             	
             </script>
 
@@ -83,7 +83,16 @@
             <script>
             	qNum++; // 2
             	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
-
+                class Animals {
+                    constructor(name,type,numberOfLegs){
+                        this.name = name;
+                        this.type = type;
+                        this.numberOfLegs = numberOfLegs; 
+                    }
+                    animalSays(sound) {
+                        console.log(this.name + " says " + sound);
+                    }
+                }
             	const dog = {
             		name: "dog",
             		type: "mammal",
@@ -92,7 +101,9 @@
             			console.log(this.name + " says " + sound);
             		}
             	}
-
+                const dogObj = new Animals(dog.name,dog.type,dog.numberOfLegs);
+                console.log(dogObj);
+                dogObj.animalSays("Bark!")
             </script>
 
 
@@ -103,7 +114,43 @@
             <script>
             	qNum++; // 3
             	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
-
+                // const studentSubject = () => {
+                //         const studentSubject = []; 
+                //         while (studentSubject.length < 3){
+                //             const subject = prompt('subject?')
+                //                 subject ? studentSubject.push(subject):null;
+                //         }
+                //         while(confirm('Do you wanna add more subject?')){
+                //             const subject = prompt('subject?')
+                //                 subject ? studentSubject.push(subject):null;
+                //         }
+                //         return studentSubject;
+                //     }
+                const scoreToGrade = (el) => {
+                    switch (el){
+                        case (el < 60) :  return typeof(el)
+                        case (el >=60 && el<70): return "D",el
+                        case (el >=70 && el<80): return "C",el
+                        case (el >=80 && el<90): return "B",el
+                        default : return typeof(el)
+                    }
+                }
+                class Student {
+                    constructor(name,age){
+                        this.name = name;
+                        this.age = age;
+    
+                    }
+                    studentResult(studentSubject){
+                        let result;
+                        result = `Student ${this.name}'s results are as follows: ` +
+                        Object.keys(studentSubject).map((el,i) => el +` ${scoreToGrade(studentSubject[el])}`)
+                        .join(', ')
+                        return result;
+                    }
+                }
+                // const jinsoo = new Student ("Jinsoo Son", 25, studentSubject());
+                // console.log(jinsoo.studentSubject);
             </script>
 
 
@@ -114,6 +161,34 @@
             <script>
             	qNum++; // 4
             	console.log("%c Question "+qNum+". ", "color: #bada55; background: black;");
+                const studentSubject2 = () => {
+                        const studentSubject = {}; 
+                        
+                        console.log(Object.keys(studentSubject).length);
+                        for (let i = 0; i<3; i){
+                            const subject = prompt('subject?')
+                            if (!subject) {
+                                continue;
+                            }
+                            let score;
+                            do { score = prompt('score?') } while (!score || isNaN(score));
+                            i++;
+                            studentSubject[subject] = parseInt(score);
+                        }
+                        while(confirm('Do you want to add more subject?')){
+                            const subject = prompt('subject?')
+                            if (!subject) {
+                                continue;
+                            }
+                            let score;
+                            do { score = prompt('score?') } while (!score || isNaN(score));
+                            studentSubject[subject] = parseInt(score);
+                        }
+                        return studentSubject; 
+                    }
+                const jinsoo = new Student ("Jinsoo Son", 25);
+                console.log(jinsoo.studentResult(studentSubject2()));
+                console.log(jinsoo);
 
             </script>
 
