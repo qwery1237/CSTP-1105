@@ -142,35 +142,7 @@
         //         }
         //         return studentSubject;
         //     }
-        const scoreToGrade = (el) => {
-          switch (Math.floor(el / 10)) {
-            case 6:
-              return "D";
-            case 7:
-              return "C";
-            case 8:
-              return "B";
-            case 9:
-              return "A";
-            default:
-              return "F";
-          }
-        };
-        class Student {
-          constructor(name, age) {
-            this.name = name;
-            this.age = age;
-          }
-          studentResult(studentSubject) {
-            let result;
-            result =
-              `Student ${this.name}'s results are as follows: ` +
-              Object.keys(studentSubject)
-                .map((el, i) => el + ` ${scoreToGrade(studentSubject[el])}`)
-                .join(", ");
-            return result;
-          }
-        }
+
         // const jinsoo = new Student ("Jinsoo Son", 25, studentSubject());
         // console.log(jinsoo.studentSubject);
       </script>
@@ -194,6 +166,39 @@
           "%c Question " + qNum + ". ",
           "color: #bada55; background: black;"
         );
+        //
+        //
+
+        const scoreToGrade = (el) => {
+          switch (Math.floor(el / 10)) {
+            case 6:
+              return "D";
+            case 7:
+              return "C";
+            case 8:
+              return "B";
+            case 9:
+            case 10:
+              return "A";
+            default:
+              return "F";
+          }
+        };
+        class Student {
+          constructor(name, age) {
+            this.name = name;
+            this.age = age;
+          }
+          studentResult(studentSubject) {
+            let result;
+            result =
+              `Student ${this.name}'s results are as follows:\n` +
+              Object.keys(studentSubject)
+                .map((el, i) => el + ` ${scoreToGrade(studentSubject[el])}`)
+                .join("\n");
+            return result;
+          }
+        }
         const getValidSubject = () => {
           let subject = prompt("subject");
           !subject ? (subject = getValidSubject()) : null;
@@ -206,10 +211,8 @@
             : null;
           return parseInt(score);
         };
-        const pushResultofSubject = (subject, score, obj) =>
-          (obj[subject] = score);
         const getAtLeast3Vals = (obj = {}) => {
-          pushResultofSubject(getValidSubject(), getValidScore(), obj);
+          obj[getValidSubject()] = getValidScore();
           Object.keys(obj).length < 3
             ? getAtLeast3Vals(obj)
             : confirm("Do you want to add more subject?")
@@ -232,7 +235,9 @@
         //   return studentSubject;
         // };
         const jinsoo = new Student("Jinsoo Son", 25);
+        const json = new Student("Json", 24);
         console.log(jinsoo.studentResult(getAtLeast3Vals()));
+        console.log(json.studentResult(getAtLeast3Vals()));
         console.log(jinsoo);
       </script>
 
