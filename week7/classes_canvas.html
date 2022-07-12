@@ -101,24 +101,85 @@
                 // fillStyle refers to the colour being used. It is sticky so all
                 // shapes being drawn after this line of code will be that colour
                 // until it is changed.
-                ctx.fillStyle = "#f00";
+                // ctx.fillStyle = "#f00";
 
                 // fillRect draws a rectangle at the x and y position. The w width
                 // and h height are extended left and down from that position
                 //           x,   y,  w,  h
-                ctx.fillRect(40, 20, 50, 50);
+                // ctx.fillRect(40, 20, 50, 50);
 
-                ctx.fillStyle = "#0f0";
-                ctx.fillRect(300, 100, 150, 90);
+                // ctx.fillStyle = "#0f0";
+                // ctx.fillRect(300, 100, 150, 90);
 
                 // This adds a "Click" event to the canvas and some code to
                 // run after each time the user clicks the canvas. In this
                 // case the code will console.log the mouse's x and y position 
                 // on the canvas when it is clicked by the mouse
-                canvas.addEventListener('click', function(event) {
-                    console.log(event.offsetX, event.offsetY);
-                });
-
+                // canvas.addEventListener('click', function(event) {
+                //     console.log(event.offsetX, event.offsetY);
+                // });
+                class CanadianProvinces {
+                    constructor(x,y,width,height,colour,name,population){
+                        this.x = x;
+                        this.y = y;
+                        this.width= width;
+                        this.height = height;
+                        this.colour = colour;
+                        this.name = name;
+                        this.population = population;
+                    }
+                    drawProvince() {
+                        ctx.fillStyle = this.colour;
+                        ctx.fillRect(this.x,this.y,this.width,this.height)
+                    }
+                }
+                const provincesArr = [
+                 
+                    new CanadianProvinces(0,60,110,180,'#2200FF','YK',40232),    
+                    new CanadianProvinces(110,50,200,190,'#ABEE00','NWT',41070),    
+                    new CanadianProvinces(310,20,130,220,'#BB44BB','NU',36858),    
+                    
+                    new CanadianProvinces(0,240,120,200,'#2398d2','BC',5000879),    
+                    new CanadianProvinces(120,240,110,180,'#36b97c','AB',4262635),    
+                    new CanadianProvinces(230,240,80,180,'#F0E330','SK',1132505),  
+                    
+                    new CanadianProvinces(310,240,90,180,'#EF6033','MA',1342153),  
+                    new CanadianProvinces(400,280,110,180,'#DA252D','ON',14223942),  
+                    new CanadianProvinces(510,140,120,280,'#E01592','QB',8501833),  
+                    
+                    new CanadianProvinces(630,180,90,30,'#2AAAB6','LAB',510550),  
+                    
+                    new CanadianProvinces(640,215,50,30,'#EA4300','PEI',154331),  
+                    
+                    new CanadianProvinces(630,250,30,70,'#793696','NB',775610),  
+                    new CanadianProvinces(660,250,30,70,'#A53636','NS',969383),  
+                ];
+                provincesArr.forEach(el => el.drawProvince());
+                const writeInitialofProv = (x,y,prov) => {
+                    ctx.font = "20px bold";
+                    ctx.fillStyle = "#000000";
+                    ctx.fillText(prov.name,x,y+15);
+                }
+                const findProvbyXandY = (x,y,provArr) => {
+                    return provArr.filter(el => x >= el.x && x < (el.x + el.width))
+                        .filter(el => y >= el.y && y < (el.y + el.height));
+                }
+                canvas.onclick = event => {
+                    const clickedProv = findProvbyXandY(event.offsetX,event.offsetY,provincesArr)[0];
+                    clickedProv
+                    ? alert( `${clickedProv.name} is clicked. It has a population of ${clickedProv.population}.`)
+                    : null;
+                }
+                canvas.onmousemove = event => {
+                    const clickedProv = findProvbyXandY(event.offsetX,event.offsetY,provincesArr)[0];
+                    provincesArr.forEach(el => el.drawProvince());
+                    (clickedProv)
+                    ? writeInitialofProv(clickedProv.x,clickedProv.y,clickedProv)
+                    : null;
+                }
+                canvas.onmouseleave = event => {
+                provincesArr.forEach(el => el.drawProvince());
+                }    
             </script>
         </ol>
     </body>
