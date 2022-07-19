@@ -82,6 +82,9 @@ print(user_name,name_length)
 	YYYY is year - age.
 """
 print("\nQ 6.")
+age = 25
+year = 2022
+print(f'My age is {age} and I was born in the year {year - age}')
 
 
 
@@ -90,6 +93,9 @@ print("\nQ 6.")
 	age and the current year
 """
 print("\nQ 7.")
+user_age = int(input("your age : "))
+crr_year = int(input('current year : '))
+print(f'My age is {user_age} and I was born in the year {crr_year - user_age}')
 
 
 
@@ -102,7 +108,10 @@ print("\nQ 7.")
 print("\nQ 8.")
 tempFahrenheit = 32
 tempCelsius = 25
-
+ftoC = (tempFahrenheit -32) /1.8
+ctoF = (tempCelsius * 1.8) + 32
+print(f'{tempCelsius} degrees Celsius is {ctoF} degrees Fahrenheit')
+print(f'{tempFahrenheit} degrees Fahrenheit is {ftoC} degrees Celsius')
 
 
 """
@@ -111,3 +120,6 @@ tempCelsius = 25
 	"6503.882cm^2". Note the area is rounded to three decimal places
 """
 print("\nQ 9.")
+radius = 45.5
+circle_area = round((radius**2) *math.pi,3) 
+print(f'{circle_area}cm^2')
