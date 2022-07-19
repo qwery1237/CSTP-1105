@@ -108,10 +108,10 @@ print(f'My age is {user_age} and I was born in the year {crr_year - user_age}')
 print("\nQ 8.")
 tempFahrenheit = 32
 tempCelsius = 25
-ftoC = (tempFahrenheit -32) /1.8
-ctoF = (tempCelsius * 1.8) + 32
-print(f'{tempCelsius} degrees Celsius is {ctoF} degrees Fahrenheit')
-print(f'{tempFahrenheit} degrees Fahrenheit is {ftoC} degrees Celsius')
+f_to_c = (tempFahrenheit -32) /1.8
+c_to_f = (tempCelsius * 1.8) + 32
+print(f'{tempCelsius} degrees Celsius is {c_to_f} degrees Fahrenheit')
+print(f'{tempFahrenheit} degrees Fahrenheit is {f_to_c} degrees Celsius')
 
 
 """
