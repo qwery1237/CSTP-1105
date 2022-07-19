@@ -20,11 +20,11 @@ import book
 """
 
 print("\nQ 1.")
-num_of_sentences = len(book.paragraphs.split('.')) - 1
+num_of_sentences = len(book.paragraphs.split('. ')) 
 num_of_words = len(book.paragraphs.split(' '))
 replaced_paragraph = book.paragraphs.replace('and', '&')
-paragraph_sentences_list = replaced_paragraph.split('.')
-last_sentence = paragraph_sentences_list[len(paragraph_sentences_list)-2]
+paragraph_sentences_list = replaced_paragraph.split('. ')
+last_sentence = paragraph_sentences_list[len(paragraph_sentences_list)-1]
 print(f"""
 There are {num_of_sentences} sentences in book.
 There are {num_of_words} words in book.
@@ -68,22 +68,35 @@ There are {num_of_words} words in book.
 
 print("\nQ 2.")
 gross_salary = input('Gross Salary : ')
-bracket = ""
-tax = 0
-child_benefit = 0
-if not gross_salary.isnumeric():
+try:
+  gross_salary = float(gross_salary)
+  if gross_salary < 0 :
+    print('Salary can not be negative')
+  else:
+    bracket = ''
+    tax = 0
+    child_benefit = 0
+    num_of_children = ''
+    if gross_salary < 500:
+      bracket = "Low"
+      num_of_children = input("How many children do you have? ")
+      num_of_children = int(num_of_children) if num_of_children.isnumeric() else 0
+      child_benefit = num_of_children*10
+    elif gross_salary < 700:
+      bracket = "Medium"
+      tax = (gross_salary - 500) * 0.15
+    else :
+      bracket = "High"
+      tax = (700 - 500.01) * 0.15 + (gross_salary - 700) * 0.25
+    tax = round(tax,2)
+    net_income = round(gross_salary + child_benefit - tax,2)
+    message = f'Gross Salary = {gross_salary}, Bracket = {bracket},Tax = {tax},'+\
+              f'     Child Benefits = {child_benefit}, Net Income = {net_income} '
+    if type(num_of_children) is int:
+      if num_of_children > 1:
+        message = message + f', this user has {num_of_children} kids'
+      else:
+        message = message + f', this user has {num_of_children} kid'
+    print (message)
+except:
   print('ERROR not a number')
-else :
-  gross_salary = int(gross_salary)
-  if gross_salary < 500:
-    bracket = "Low"
-    num_of_children = input("How many children do you have? ")
-    num_of_children = int(num_of_children) if num_of_children.isnumeric() else 0
-    child_benefit = num_of_children*10
-  elif gross_salary < 700:
-    bracket = "Medium"
-    tax = (gross_salary - 500) * 0.15
-  else :
-    bracket = "High"
-    tax = (700 - 500.01) * 0.15 + (gross_salary - 700) * 0.25
-  net_income = gross_salary + child_benefit - tax

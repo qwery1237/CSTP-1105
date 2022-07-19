@@ -103,7 +103,7 @@ if '-' in current_hour:
 else :
 	current_hour = int(current_hour) if current_hour.isnumeric() else 0
 
-if current_hour < 0 or current_hour > 23:
+if 23 < current_hour < 0 :
 	print('No time')
 elif 0 <= current_hour <= 12 :
 	print('Morning time')
