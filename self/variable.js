@@ -1,5 +1,7 @@
 'use strict';
+console.log(`====================  VARIABLE ====================
 
+`)
 // The type of  (+- Infinity and NaN) is number 
 log(1/0 == Infinity);
 log(1/0 == -Infinity);

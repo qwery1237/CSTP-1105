@@ -1,3 +1,7 @@
+'use strict';
+console.log(`====================  OPERATOR  ====================
+
+`)
 // var++ vs ++var
 let count = 1;
 log(++count,count,count++,count);
@@ -12,8 +16,8 @@ log(++count,count,count++,count);
 //      default(the others):
 //          do the others;
             
-const browser = function (){ return confirm("IE or not?") ? 'IE' : confirm("Firefox or Chrome?") ? 'Chrome' : ''};
-switch (browser()) {
+const browser = 'Chrome'
+switch (browser) {
     case 'IE':
         log("IE browser!");
         break;
