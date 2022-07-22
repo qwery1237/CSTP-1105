@@ -7,9 +7,14 @@
 print("\nQ 1.")
 
 my_list = ["list1", "list2"]
-my_tuple = ("tuple1", "tuple1")
+my_tuple = ("tuple1", "tuple2")
 my_dict = {"A": "word", "B": 1, "C": 3}
-
+for el in my_list:
+	print(el)
+for el in my_tuple:
+	print(el)
+for el in my_dict:
+	print(f'{el} : {my_dict[el]}')
 
 
 """
@@ -20,7 +25,8 @@ my_dict = {"A": "word", "B": 1, "C": 3}
 print("\nQ 2.")
 
 my_string = "abcd"
-
+for letter in my_string:
+	print(f'{letter} is a letter in {my_string}')
 
 
 """
@@ -33,13 +39,19 @@ print("\nQ 3.")
 
 my_other_string = "abcdefghijklmnopqrstuvwxyz"
 
-
-
+message = ''
+for letter in my_other_string:
+	if letter in 'aeiou':
+		message = message + letter.capitalize()
+	else :
+		message = message + letter
+print(message)
 """
 	4.) Write a for loop that prints the numbers from 0 to 5
 """
 print("\nQ 4.")
-
+for num in range(0,6):
+	print(num)
 
 
 """
@@ -48,8 +60,10 @@ print("\nQ 4.")
 	sure to print this all off in a single print()
 """
 print("\nQ 5.")
-
-
+message2 = ''
+for num in range(0,6):
+	message2 = message2 + f'{5+num*3} '
+print(message2)
 
 """
 	6.) Create a new list that contains only the planet strings
@@ -59,7 +73,11 @@ print("\nQ 5.")
 print("\nQ 6.")
 
 planet_list = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
-
+new_planet_list = []
+for planet in planet_list:
+	if len(planet) <= 5 :
+		new_planet_list.append(planet)
+print(new_planet_list)
 
 
 """
@@ -71,9 +89,12 @@ planet_list = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus
 print("\nQ 7.")
 
 list_to_remove_items = ['N', 'A', 'B', 'N', 'N', 'M', 'B', 'W', 'A', 'N', 'L', 'S', 'H', 'D', 'N', 'N', 'P']
-
-
-
+num_of_n = 0
+while 'N' in list_to_remove_items :
+	num_of_n += 1
+	list_to_remove_items.remove('N')
+print(list_to_remove_items)
+print(f'{num_of_n} numver of Ns were removed from the list')
 """
 	8.) Write code that asks the user to input a number. If they
 	don't input a number, keep asking them to do it until they
@@ -83,5 +104,9 @@ list_to_remove_items = ['N', 'A', 'B', 'N', 'N', 'M', 'B', 'W', 'A', 'N', 'L', '
 """
 print("\nQ 8.")
 
+num_user_input = input('Enter a number : ')
+while not num_user_input.isnumeric() :
+	num_user_input = input('Please put a number : ')
 
-
+print(f'Half of your number is {int(num_user_input)/2}')
+ 
