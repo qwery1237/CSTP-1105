@@ -85,6 +85,7 @@ gross_salary = input('Gross Salary : ')
 # and add information about the number of children to the end of the message.
 try:
     gross_salary = round(float(gross_salary), 2)
+
     if gross_salary < 0:
         print('Salary can not be negative')
     else:
@@ -92,6 +93,7 @@ try:
         tax = 0
         child_benefit = 0
         num_of_children = ''
+
         if gross_salary < 500:
             bracket = "Low"
             num_of_children = input("How many children do you have? ")
@@ -108,11 +110,13 @@ try:
         net_income = round(gross_salary + child_benefit - tax, 2)
         message = f'Gross Salary = {gross_salary}, Bracket = {bracket},Tax = {tax},' +\
                   f'     Child Benefits = {child_benefit}, Net Income = {net_income} '
+
         if type(num_of_children) is int:
             if num_of_children > 1:
                 message = message + f', this user has {num_of_children} kids'
             else:
                 message = message + f', this user has {num_of_children} kid'
+
         print(message)
 except:
     print('ERROR not a number')
