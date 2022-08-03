@@ -55,7 +55,7 @@ with open('exam_results.csv', mode='r+', encoding='utf-8') as f1:
     # Find the sum and average of each subject.                             (2)
     # Add the sum and average to the end of each list.                      (3)
     # Change the data type of each list to string
-    # and change the data for that element in the multi-list to a string.   (4)
+    # and change the data for that element in the multi-list to the string. (4)
 
     for line_num in range(1, len(all_text_multi_li)):
 
